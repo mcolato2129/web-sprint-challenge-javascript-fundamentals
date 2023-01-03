@@ -205,23 +205,25 @@ function CuboidMaker(props){
   this.length = props.length
   this.width = props.width
   this.height = props.height 
-  this.volume = function(){
-    return props.length * props.width * props.height;
-  }
-  this.surfaceArea = function(){
-    return 2 * (props.length * props.width + props.length * props.height + props.width * props.height);
-  }
+  // this.volume = function(){
+  //   return props.length * props.width * props.height;
+  // }
+  // this.surfaceArea = function(){
+  //   return 2 * (props.length * props.width + props.length * props.height + props.width * props.height);
+  // }
   // const volume = props.l * props.w * props.h;
   // console.log(volume)
 }
-CuboidMaker.volume;
-const cube = new CuboidMaker({length: 4, width: 8, height: 10});
-console.log('Step 10',cube.surfaceArea());
+// CuboidMaker.volume;
+// const cube = new CuboidMaker({length: 4, width: 8, height: 10});
+// console.log('Step 10',cube.surfaceArea());
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
   Create a method called volume using CuboidMaker's prototype that returns the volume of a given cuboid's length, width, and height
   💡 NOTE: Formula for cuboid volume: length * width * height   
 */
-
+CuboidMaker.prototype.volume = function(){
+  return this.length * this.width * this.height;
+}
 
 
 
@@ -229,8 +231,11 @@ console.log('Step 10',cube.surfaceArea());
   Create another method called surfaceArea using CuboidMaker's prototype that returns the surface area of a given cuboid's length, width, and height. 
   💡 NOTE: Formula for cuboid surface area: 2 * (length * width + length * height + width * height)  
 */
-
-
+CuboidMaker.prototype.surfaceArea = function(){
+  return 2 * ((this.length * this.width) + (this.length * this.height) + (this.width * this.height));
+}
+const cube = new CuboidMaker({length: 4, width: 8, height: 10});
+console.log('Step 10', cube.volume());
 
 
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker (not auto graded)🐴🐴🐴
@@ -243,8 +248,8 @@ const cuboid = new CuboidMaker({length: 5, width: 5, height: 4});
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
- console.log(cuboid.volume()); // 100
- console.log(cuboid.surfaceArea()); // 130
+ console.log('test 4:', cuboid.volume()); // 100
+ console.log('test 4b:', cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
@@ -268,8 +273,8 @@ let cuboidTwo = new CuboidMakerTwo({length: 5, width: 5, height: 4});
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
-console.log(cuboidTwo.volume()); // 100
-console.log(cuboidTwo.surfaceArea()); // 130
+console.log('Test 5:', cuboidTwo.volume()); // 100
+console.log('Test 5b:', cuboidTwo.surfaceArea()); // 130
 
 
 
